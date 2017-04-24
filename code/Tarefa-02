@@ -1,0 +1,95 @@
+//criar pasta 'tarefas' dentreo da pasta code do github e colocar arquivo do cod 'codigo.ino'
+// Tulio Loureiro de Carvalho
+// Raphael Barros
+
+//Tarefa-02
+/*Piscar o LED a cada 1 segundo
+Botão 1: Acelerar o piscapisca a cada pressionamento (somente ao pressionar e não ao soltar)
+Botão 2: Desacelerar a cada pressionamento (somente ao pressionar e não ao soltar)
+Botão 1+2 (em menos de 500ms): Parar
+*/
+#define LED_PIN 13
+#define BUT_PIN_MINUS 4
+#define BUT_PIN_PLUS 2
+
+int state = 1;
+unsigned long old;
+int velocidade = 400;
+unsigned long nowPlus;
+unsigned long nowMinus;
+int butMinus;
+int butPlus;
+
+void setup() {
+
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUT_PIN_MINUS, INPUT);
+  pinMode(BUT_PIN_PLUS, INPUT);
+  old = millis();
+  digitalWrite(LED_PIN, state);
+
+}
+
+void loop() {
+
+  unsigned long now = millis();
+  if(now >= old+velocidade) {
+    old = now;
+    state = !state;
+    digitalWrite(LED_PIN, state);
+  }
+  butMinus = digitalRead(BUT_PIN_MINUS);
+  butPlus = digitalRead(BUT_PIN_PLUS);
+   
+  
+  if(butMinus == LOW) {
+	nowMinus = millis();
+  	if(butPlus == LOW){
+		nowPlus = millis();
+		if((nowPlus - nowMinus) <= 500){
+			while((!digitalRead(BUT_PIN_MINUS)) && (!digitalRead(BUT_PIN_PLUS))){
+			digitalWrite(LED_PIN, state);  
+			}	
+		}
+	  }else {
+		velocidade += 100;
+		while((!digitalRead(BUT_PIN_MINUS)) && (butPlus = HIGH)){
+			unsigned long now = millis();
+			if(now >= old+velocidade) {
+			old = now;
+			state = !state;
+			digitalWrite(LED_PIN, state);
+			butPlus = digitalRead(BUT_PIN_PLUS);
+			}
+			
+		}  
+		  
+	}
+  }
+	
+	if(butPlus == LOW) {
+	nowPlus = millis();
+		if(butMinus == LOW){
+			nowMinus = millis();
+			if((nowMinus - nowPlus) <= 500){
+				while((!digitalRead(BUT_PIN_MINUS)) && (!digitalRead(BUT_PIN_PLUS))){
+				digitalWrite(LED_PIN, state);  
+				}
+			}    
+		}else {
+		velocidade -= 100;
+		while((!digitalRead(BUT_PIN_PLUS)) && ((butMinus = HIGH))){
+			unsigned long now = millis();
+				if(now >= old+velocidade) {
+				old = now;
+				state = !state;
+				digitalWrite(LED_PIN, state);
+				butMinus = digitalRead(BUT_PIN_MINUS);
+				}
+			
+		}  
+		  
+	  }
+	}
+	
+}
