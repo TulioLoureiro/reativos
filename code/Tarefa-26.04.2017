@@ -23,9 +23,6 @@ void loop () {
     i=0;
     while(i<=4){
      
-        
-       // uint32_t v2[] = {v[i], v[i+1]};
-      
         Serial.print("antes: ");
         Serial.print(v[i]);
         Serial.print(" ");
