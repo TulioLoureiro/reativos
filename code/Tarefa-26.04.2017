@@ -1,13 +1,13 @@
-#define LED 13
+//Tulio Loureiro de Carvalho
 
+#define LED 13
 #include "xtea.c.h"
 
 int i;
 void setup () {
     pinMode(LED, OUTPUT);
     Serial.begin(9600);
-    i=0;
-}
+   }
  
 uint32_t key[] = { 1, 2, 3, 4 };
 uint32_t v[]   = { 10, 20, 30, 40, 50, 60 };
@@ -20,7 +20,7 @@ void loop () {
     
 
     unsigned long t1 = millis();
-
+    i=0;
     while(i<=4){
      
         
