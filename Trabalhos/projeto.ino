@@ -19,7 +19,7 @@ void setup() {
  // configura pino GATILHO como saída
  pinMode(gatilho,OUTPUT);
 
- // deixa pino em LOW
+  // deixa pino em LOW
  digitalWrite(gatilho,LOW);
 
   // configura pino ECHO como entrada
@@ -32,7 +32,7 @@ void setup() {
 void loop() {
    // disparar pulso ultrassônico
    digitalWrite(gatilho, HIGH);
-
+   delayMicroseconds(10);
    digitalWrite(gatilho, LOW);
    
    // medir tempo de ida e volta do pulso ultrassônico
