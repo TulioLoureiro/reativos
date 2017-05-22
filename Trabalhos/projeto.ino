@@ -1,5 +1,5 @@
-// biblioteca para o display LCD
 //Integrantes: Raphael Barros, Tulio Loureiro, Fabiano Santos
+// biblioteca para o display LCD
 #include <LiquidCrystal.h>
 # define LED_PIN 10
 
@@ -57,7 +57,7 @@ void loop() {
    }
     
    if(on){
-       tempo_ligado = trunc(millis() - start)/1000);  
+       tempo_ligado = trunc((millis() - start)/1000);  
    }else{
       tempo_ligado = 0;
    }
