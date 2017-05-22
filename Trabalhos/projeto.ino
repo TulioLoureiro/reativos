@@ -1,4 +1,5 @@
 // biblioteca para o display LCD
+//Integrantes: Raphael Barros, Tulio Loureiro, Fabiano Santos
 #include <LiquidCrystal.h>
 # define LED_PIN 10
 
@@ -21,9 +22,7 @@ void setup() {
  // deixa pino em LOW
  digitalWrite(gatilho,LOW);
 
- delayMicroseconds(10);
- 
- // configura pino ECHO como entrada
+  // configura pino ECHO como entrada
  pinMode(echo,INPUT);
 
  pinMode(LED_PIN,OUTPUT);
@@ -34,7 +33,6 @@ void loop() {
    // disparar pulso ultrassônico
    digitalWrite(gatilho, HIGH);
 
-   delayMicroseconds(10);
    digitalWrite(gatilho, LOW);
    
    // medir tempo de ida e volta do pulso ultrassônico
@@ -59,7 +57,7 @@ void loop() {
    }
     
    if(on){
-       tempo_ligado = (millis() - start)/1000;  
+       tempo_ligado = trunc(millis() - start)/1000);  
    }else{
       tempo_ligado = 0;
    }
@@ -78,5 +76,4 @@ void loop() {
     }
     
    delay(1000);
-   delayMicroseconds(200);
 }
