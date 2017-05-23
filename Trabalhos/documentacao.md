@@ -16,4 +16,4 @@ retorno (echo) do sinal, e com base no tempo entre envio e retorno, calcula a di
 Para determinar a distância entre o sensor e o objeto, utiliza-se a equação 
 Distância = (Tempo echo em nível alto * velocidade do som) /2
 
-Link do vídeo disponibilizado no YouTube : https://youtu.be/Aj_9ZsvvqEg
+Link do vídeo disponibilizado no YouTube : https://youtu.be/Sl_0uLWuiW8
